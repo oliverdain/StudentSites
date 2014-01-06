@@ -9,6 +9,5 @@ following pieces:
   any other directories. Access is mediated via public keys so it works cleanly
   with codio. Note that they aren't really ssh-ing to a "home" directory,
   they're sshing to a subdirectory of a node app.
-
 * A node app that serves all subdomains. The subdomain determines which
   student's app is being served.
