@@ -31,8 +31,16 @@ var getSubApp = function(student) {
     var HTML_REGEX = /\.html$/;
 
     subApp.all('*', function(req, res, next) {
-      if (HTML_REGEX.test(req.path)) {
-        var fullPath = STUDENT_ROOTS + '/' + student +  req.path;
+      var reqPath;
+      if (req.path === '/') {
+        console.log('path is / changing to index.html');
+        reqPath = '/index.html';
+      } else {
+        reqPath = req.path;
+      }
+
+      if (HTML_REGEX.test(reqPath)) {
+        var fullPath = STUDENT_ROOTS + '/' + student +  reqPath;
         fs.exists(fullPath, function(exists) {
           if (exists) {
             console.log('%s exists, calling render', fullPath);
@@ -49,7 +57,7 @@ var getSubApp = function(student) {
           }
         });
       } else {
-        console.log('%s is not an html file, calling next', req.path);
+        console.log('%s is not an html file, calling next', reqPath);
         next();
       }
     });
