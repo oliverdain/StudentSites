@@ -14,15 +14,15 @@ Rsync Setup
 
 An rsyncd.conf file that looks something like:
 
-   port = 1337
-   log file = /home/ubuntu/rsync.log
+     port = 1337
+     log file = /home/ubuntu/rsync.log
 
-   [oliver]
-   path = /home/ubuntu/www/oliver
-   auth users = oliver
-   secrets file = /home/ubuntu/rsync.users
-   use chroot = false
-   read only = false
+     [oliver]
+     path = /home/ubuntu/www/oliver
+     auth users = oliver
+     secrets file = /home/ubuntu/rsync.users
+     use chroot = false
+     read only = false
 
 Here the port an log file are set globally. Then we have one "module" for each
 user. In the above, the only user is "oliver". The "auth users" section of that
@@ -34,7 +34,7 @@ of user:password pairs (one per line) that are used for authentication.
 
 Given this, we can start rsync like:
 
-   rsync --daemon --config=rsyncd.conf
+     rsync --daemon --config=rsyncd.conf
 
 Node Setup
 ==========
